@@ -7666,7 +7666,7 @@
       var vnode = res && res[0];
       return res && (
         !vnode ||
-        (res.length === 1 && vnode.isComment && !isAsyncPlaceholder(vnode)) // #9658, #10391
+        (vnode.isComment && !isAsyncPlaceholder(vnode)) // #9658, #10391
       ) ? undefined
         : res
     };
