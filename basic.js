@@ -6423,7 +6423,6 @@
   }
 
   /*  */
-  var LRU = require("lru-cache");
 
 
 
@@ -6437,7 +6436,6 @@
   }
 
   function createCompileToFunctionFn (compile) {
-    var cache = new LRU(50);
 
     return function compileToFunctions (
       template,
@@ -6464,17 +6462,6 @@
             );
           }
         }
-      }
-
-      // check cache
-      var key = options.delimiters
-        ? String(options.delimiters) + template
-        : template;
-
-      var cacheResult = cache.get(key);
-
-      if (cacheResult) {
-        return cacheResult
       }
 
       // compile
@@ -6534,8 +6521,6 @@
           );
         }
       }
-
-      cache.set(key, res);
 
       return res;
     }
